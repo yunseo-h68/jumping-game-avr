@@ -436,9 +436,7 @@ void game_pause()
 
 void game_difficulty_led_set()
 {
-	DDRF = 0x3F;
 	DDRD = 0x3F;
-	PORTF = 0x00;
 	PORTD = 0x00;
 	game_difficulty = 6;
 }
@@ -448,8 +446,7 @@ void game_difficulty_up()
 	game_difficulty--;
 	if (game_difficulty < 0) game_difficulty = 6;
 	
-	if (game_difficulty >= 4) PORTD |= BV(game_difficulty);
-	else PORTF |= BV(game_difficulty);
+	PORTD |= BV(game_difficulty);
 }
 
 uint8_t get_game_grade()
